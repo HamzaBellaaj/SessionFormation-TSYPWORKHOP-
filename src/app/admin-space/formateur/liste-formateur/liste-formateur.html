@@ -1,0 +1,94 @@
+<div class="admin-page">
+  @if(!showAdd && !showEdit) {
+  <header class="admin-header">
+    <h1 class="admin-title">Administration des Formateurs</h1>
+    <p class="admin-subtitle">Gérez tous vos formateurs et leurs affectations</p>
+    <button class="btn-details" (click)="onAddFormateur()"><i class="fas fa-eye"></i> Ajouter</button>
+  </header>
+
+  <div class="admin-stats">
+    <div class="stat-card">
+      <h3>Total Formateurs</h3>
+      <div class="number">{{ formateurs.length }}</div>
+      <div class="label">Formateurs actifs</div>
+    </div>
+  </div>
+
+  <div class="workshop-table-container">
+    <table class="workshop-table">
+      <thead>
+        <tr>
+          <th>Photo</th>
+          <th>Nom & Prénom</th>
+          <th>Coordonnées</th>
+          <th>Informations</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (formateur of formateurs; track formateur.id) {
+        <tr class="workshop-row">
+          <!-- Photo -->
+          <td class="workshop-image-cell">
+            <img [src]="formateur.image" 
+                 alt="{{ formateur.prenom }} {{ formateur.nom }}" 
+                 class="workshop-image">
+          </td>
+          
+          <!-- Nom & Prénom -->
+          <td class="workshop-title-cell">
+            <h3 class="workshop-title">{{ formateur.prenom }} {{ formateur.nom }}</h3>
+            <p class="formateur-cin">CIN: {{ formateur.cin }}</p>
+          </td>
+          
+          <!-- Coordonnées -->
+          <td class="workshop-description-cell">
+            <div class="formateur-contact">
+              <p><i class="fas fa-envelope"></i> {{ formateur.mail }}</p>
+              <p><i class="fas fa-map-marker-alt"></i> {{ formateur.pays }}</p>
+              <p><i class="fas fa-briefcase"></i> {{ formateur.lieuTravail }}</p>
+            </div>
+          </td>
+          
+          <!-- Informations -->
+          <td class="workshop-meta-cell">
+            <span class="meta-item">🎂 {{ getAge(formateur.dateNaissance) }} ans</span>
+            <span class="meta-item">📍 {{ formateur.pays }}</span>
+            <span class="meta-item">🏢 {{ formateur.lieuTravail }}</span>
+            @if(formateur.cv) {
+              <a [href]="formateur.cv" target="_blank" class="meta-item cv-link">
+                <i class="fas fa-file-pdf"></i> Voir CV
+              </a>
+            }
+          </td>
+          
+          <!-- Actions -->
+          <td>
+            <button class="btn-edit" (click)="onEditFormateur(formateur)">
+              <i class="fas fa-edit"></i> Éditer
+            </button>
+            <button class="btn-delete" (click)="onDeleteFormateur(formateur.id)">
+              <i class="fas fa-trash"></i> Supprimer
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  }
+
+  @if(showAdd) {
+    <div class="form-container">
+      <h2>Ajouter un nouveau formateur</h2>
+      <app-add-formateur (save)="onSaveAdd($event)" (cancel)="onCancel()"></app-add-formateur>
+    </div>
+  }
+
+  @if(showEdit && selectedFormateur) {
+    <div class="form-container">
+      <h2>Éditer le formateur</h2>
+      <app-edit-formateur [formateur]="selectedFormateur" (save)="onSaveEdit($event)" (cancel)="onCancel()"></app-edit-formateur>
+    </div>
+  }
+</div>

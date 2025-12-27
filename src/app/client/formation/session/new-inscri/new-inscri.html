@@ -1,0 +1,22 @@
+<div class="backdrop" (click)="annuler()"></div>
+<dialog open>
+  <h2>Formulaire d'inscription</h2>
+  <form (ngSubmit)="sInscrire()">
+    <p>
+      <label>Nom</label>
+      <input type="text"/>
+    </p>
+    <p>
+      <label>Prénom</label>
+      <input type="text"/>
+    </p>
+    <p>
+      <label>CIN</label>
+      <input type="text"/>
+    </p>
+    <p>
+      <button type="button" (click)="annuler()">Annuler</button>
+      <button type="submit">S'inscrire</button>
+    </p>
+  </form>
+</dialog>

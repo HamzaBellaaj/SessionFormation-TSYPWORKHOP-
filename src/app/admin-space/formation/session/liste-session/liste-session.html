@@ -1,0 +1,108 @@
+<div class="admin-page">
+  @if(!showAdd && !showEdit) {
+  <header class="admin-header">
+    <div class="header-content">
+      <button class="btn-back" (click)="goBack()">
+        <i class="fas fa-arrow-left"></i> Retour aux formations
+      </button>
+      <h1 class="admin-title">Sessions du Workshop</h1>
+      <p class="admin-subtitle">{{ workshop?.titre }}</p>
+    </div>
+    <button class="btn-details" (click)="onAddSession()"><i class="fas fa-users"></i> Ajouter Session</button>
+  </header>
+
+  <div class="admin-stats">
+    <div class="stat-card">
+      <h3>Sessions Total</h3>
+      <div class="number">{{ sessions.length }}</div>
+      <div class="label">Sessions disponibles</div>
+    </div>
+    <div class="stat-card">
+      <h3>Étudiants Inscrits</h3>
+      <div class="number">{{ getTotalStudents() }}</div>
+      <div class="label">Inscriptions totales</div>
+    </div>
+  </div>
+
+  <div class="workshop-table-container">
+    <table class="workshop-table">
+      <thead>
+        <tr>
+          <th>ID Session</th>
+          <th>Localisation</th>
+          <th>Date & Heure</th>
+          <th>Formateur(s)</th>
+          <th>Inscriptions</th>
+          <th>Statut</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (session of sessions; track session.id) {
+        <tr class="workshop-row">
+          <td class="session-id-cell">
+            <strong>{{ session.id }}</strong>
+          </td>
+          <td class="session-location-cell">
+            <p><i class="fas fa-map-marker-alt"></i> {{ session.localisation }}</p>
+          </td>
+          <td class="session-date-cell">
+            <p><i class="fas fa-calendar-alt"></i> {{ session.dateDebut }} au {{ session.dateFin }}</p>
+            <p><i class="fas fa-clock"></i> {{ session.heure }}</p>
+          </td>
+          <td class="session-formateur-cell">
+            <div class="formateur-info">
+              @if(getFormateur(session)) {
+                <p>{{ getFormateur(session)?.prenom }} {{ getFormateur(session)?.nom }}</p>
+              }
+              @if(!getFormateur(session)) {
+                <p class="no-formateur">À déterminer</p>
+              }
+            </div>
+          </td>
+          <td class="session-students-cell">
+            <div class="progress-container">
+              <div class="progress-bar">
+                <div class="progress-fill" [style.width.%]="(session.nombreEtudiants / 15) * 100"></div>
+              </div>
+              <span class="progress-text">{{ session.nombreEtudiants }}/15</span>
+            </div>
+          </td>
+          <td class="session-status-cell">
+            @if(session.nombreEtudiants >= 15) {
+              <span class="status-badge status-full">Complet</span>
+            } @else if(session.nombreEtudiants >= 10) {
+              <span class="status-badge status-almost">Presque complet</span>
+            } @else {
+              <span class="status-badge status-available">Disponible</span>
+            }
+          </td>
+          <td>
+            <button class="btn-edit" (click)="onEditSession(session)">
+              <i class="fas fa-edit"></i> Éditer
+            </button>
+            <button class="btn-delete" (click)="onDeleteSession(session.id)">
+              <i class="fas fa-trash"></i> Supprimer
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  }
+
+  @if(showAdd) {
+    <div class="form-container">
+      <h2>Ajouter une nouvelle session</h2>
+      <app-add-session [formateurs]="formateurs" (save)="onSaveAdd($event)" (cancel)="onCancel()"></app-add-session>
+    </div>
+  }
+
+  @if(showEdit && selectedSession) {
+    <div class="form-container">
+      <h2>Éditer la session</h2>
+      <app-edit-session [session]="selectedSession" [formateurs]="formateurs" (save)="onSaveEdit($event)" (cancel)="onCancel()"></app-edit-session>
+    </div>
+  }
+</div>

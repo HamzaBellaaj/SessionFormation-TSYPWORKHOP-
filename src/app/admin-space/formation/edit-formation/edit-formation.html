@@ -1,0 +1,71 @@
+<form class="form-container">
+  <div class="form-group">
+    <label for="titre">Titre *</label>
+    <input
+      type="text"
+      id="titre"
+      [(ngModel)]="editForm.titre"
+      name="titre"
+      placeholder="Ex: Angular Avancé"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description *</label>
+    <textarea
+      id="description"
+      [(ngModel)]="editForm.description"
+      name="description"
+      placeholder="Description de la formation"
+      rows="4"
+      required
+    ></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="niveau">Niveau *</label>
+    <select
+      id="niveau"
+      [(ngModel)]="editForm.niveau"
+      name="niveau"
+      required
+    >
+      <option value="">-- Sélectionner un niveau --</option>
+      <option value="Débutant">Débutant</option>
+      <option value="Intermédiaire">Intermédiaire</option>
+      <option value="Avancé">Avancé</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="imageUrl">URL de l'image</label>
+    <input
+      type="text"
+      id="imageUrl"
+      [(ngModel)]="editForm.imageUrl"
+      name="imageUrl"
+      placeholder="https://example.com/image.jpg"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="tags">Tags (séparés par des virgules)</label>
+    <input
+      type="text"
+      id="tags"
+      [(ngModel)]="tagsInput"
+      name="tags"
+      placeholder="Angular, TypeScript, Web"
+    />
+  </div>
+
+  <div class="form-actions">
+    <button type="button" class="btn-save" (click)="onSave()" [disabled]="!validateForm()">
+      <i class="fas fa-save"></i> Enregistrer
+    </button>
+    <button type="button" class="btn-cancel" (click)="onCancel()">
+      <i class="fas fa-times"></i> Annuler
+    </button>
+  </div>
+</form>

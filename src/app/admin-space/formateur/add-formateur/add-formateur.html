@@ -1,0 +1,102 @@
+<form class="form-container">
+  <div class="form-row">
+    <div class="form-group">
+      <label for="nom">Nom *</label>
+      <input
+        type="text"
+        id="nom"
+        [(ngModel)]="formateur.nom"
+        name="nom"
+        placeholder="Nom"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="prenom">Prénom *</label>
+      <input
+        type="text"
+        id="prenom"
+        [(ngModel)]="formateur.prenom"
+        name="prenom"
+        placeholder="Prénom"
+        required
+      />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="mail">Email *</label>
+    <input
+      type="email"
+      id="mail"
+      [(ngModel)]="formateur.mail"
+      name="mail"
+      placeholder="email@example.com"
+      required
+    />
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="cin">CIN</label>
+      <input type="text" id="cin" [(ngModel)]="formateur.cin" name="cin" placeholder="Numéro CIN" />
+    </div>
+    <div class="form-group">
+      <label for="pays">Pays</label>
+      <input type="text" id="pays" [(ngModel)]="formateur.pays" name="pays" placeholder="Pays" />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="dateNaissance">Date de naissance</label>
+    <input
+      type="date"
+      id="dateNaissance"
+      [(ngModel)]="formateur.dateNaissance"
+      name="dateNaissance"
+    />
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="lieuTravail">Lieu de travail</label>
+      <input
+        type="text"
+        id="lieuTravail"
+        [(ngModel)]="formateur.lieuTravail"
+        name="lieuTravail"
+        placeholder="Lieu de travail"
+      />
+    </div>
+    <div class="form-group">
+      <label for="image">Image URL</label>
+      <input
+        type="text"
+        id="image"
+        [(ngModel)]="formateur.image"
+        name="image"
+        placeholder="https://example.com/image.jpg"
+      />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="cv">CV</label>
+    <textarea
+      id="cv"
+      [(ngModel)]="formateur.cv"
+      name="cv"
+      placeholder="Curriculum Vitae"
+      rows="4"
+    ></textarea>
+  </div>
+
+  <div class="form-actions">
+    <button type="button" class="btn-save" (click)="onSave()" [disabled]="!validateForm()">
+      <i class="fas fa-save"></i> Enregistrer
+    </button>
+    <button type="button" class="btn-cancel" (click)="onCancel()">
+      <i class="fas fa-times"></i> Annuler
+    </button>
+  </div>
+</form>

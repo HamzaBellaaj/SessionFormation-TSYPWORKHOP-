@@ -1,0 +1,82 @@
+<app-cheader></app-cheader>
+<main class="formation-container">
+  @if(!afficherDetails) {
+  <section class="formations-section">
+    <h1 class="section-title">Nos Formations <span class="highlight">TSYP</span></h1>
+    <p class="section-subtitle">Workshops techniques spécialisés de l'IEEE Tunisian Section</p>
+    <div class="simple-search-container">
+      <div class="search-wrapper">
+        <i class="fas fa-search"></i>
+        <input
+          type="text"
+          [(ngModel)]="rechercheText"
+          (input)="rechercher()"
+          placeholder="Rechercher..."
+          class="search-input-simple"
+        />
+      </div>
+    </div>
+    <div class="workshops-grid">
+      @for (formation of formations_filtrees; track formation.id) {
+      <div class="workshop-card-wrapper">
+        <app-workshops [workshop]="formation" (details)="afficherDetailsFormation($event)" />
+      </div>
+      }
+    </div>
+  </section>
+  } @else {
+  <section class="details-section">
+    <div class="details-header">
+      <button class="btn-back" (click)="retourAuListe()">
+        <i class="fas fa-arrow-left"></i> Retour
+      </button>
+    </div>
+
+    <div class="details-container">
+      <div class="details-image-section">
+        <div class="image-container">
+          <img
+            [src]="formations[idSelected - 1].imageUrl"
+            alt="{{ formations[idSelected - 1].titre }}"
+            class="workshop-image-large"
+          />
+        </div>
+        <div class="workshop-tag">
+          {{ formations[idSelected - 1].sessions.length }} session(s)
+        </div>
+      </div>
+
+      <div class="details-content">
+        <div class="workshop-header">
+          <h1 class="workshop-title-detail">{{ formations[idSelected - 1].titre }}</h1>
+          <div class="workshop-status">
+            <span class="status-badge">
+              {{ compterEtudiants(formations[idSelected - 1]) }} étudiants inscrits
+            </span>
+          </div>
+        </div>
+
+        <div class="workshop-description-box">
+          <h3>Description</h3>
+          <p class="description">{{ formations[idSelected - 1].description }}</p>
+        </div>
+
+        <div class="workshop-info-grid">
+          <div class="info-card">
+            <h4>Niveau</h4>
+            <p>{{ formations[idSelected - 1].niveau }}</p>
+          </div>
+        </div>
+
+        <!-- LES SESSIONS -->
+        <div class="sessions-container">
+          <h3>Sessions disponibles :</h3>
+          @for (session of formations[idSelected - 1].sessions; track session.id) {
+          <app-session [session]="session" [formateurs]="formateurs" [workshopId]="formations[idSelected - 1].id" (inscriptionComplete)="chargerDonnees()"></app-session>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+  }
+</main>

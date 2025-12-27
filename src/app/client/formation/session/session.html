@@ -1,0 +1,52 @@
+@if(showForm){
+  <app-new-inscri [session]="session" [workshopId]="workshopId" (close)="closeForm()"/>
+}
+<div class="session-card">
+  <div class="session-header">
+    <h4 class="session-title">Session {{ session.id.split('-')[1] }}</h4>
+    <span class="session-badge">{{ session.nombreEtudiants }}/15 places</span>
+  </div>
+  
+  <div class="session-details">
+    <div class="detail-row">
+      <i class="fas fa-map-marker-alt"></i>
+      <span>{{ session.localisation }}</span>
+    </div>
+    
+    <div class="detail-row">
+      <i class="fas fa-clock"></i>
+      <span>{{ session.heure }} ({{ session.dateDebut }} au {{ session.dateFin }})</span>
+    </div>
+    
+    <div class="detail-row formateurs-row">
+      <i class="fas fa-user-tie"></i>
+      <div class="formateurs-list">
+        @if(getFormateur1()) {
+          <span class="formateur-item">
+            {{ getFormateur1()?.prenom }} {{ getFormateur1()?.nom }}
+          </span>
+        }
+        @if(getFormateur2()) {
+          <span class="formateur-item">
+            {{ getFormateur2()?.prenom }} {{ getFormateur2()?.nom }}
+          </span>
+        }
+        @if(!getFormateur1() && !getFormateur2()) {
+          <span class="no-formateur">Formateur à déterminer</span>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    @if(isComplet()) {
+      <button class="btn-enroll btn-complete" disabled>
+        <i class="fas fa-check"></i> Complet
+      </button>
+    } @else {
+      <button class="btn-enroll" (click)="openForm()">
+        <i class="fas fa-user-plus"></i> S'inscrire à cette formation
+      </button>
+    }
+  </div>
+</div>

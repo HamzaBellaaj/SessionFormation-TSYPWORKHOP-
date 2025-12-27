@@ -1,0 +1,15 @@
+@if(test==-1){
+  <div class="workshop-card">
+    <img [src]="workshop.imageUrl" alt="{{ workshop.titre }}" class="workshop-image">
+    <div class="workshop-content">
+      <h3 class="workshop-title">{{ workshop.titre }}</h3>
+      <p class="workshop-description">{{ workshop.description }}</p>
+      <div class="workshop-meta">
+        <span class="meta-item">📊 Niveau: {{ workshop.niveau }}</span>
+        <span class="meta-item">📅 Sessions: {{ workshop.sessions.length }}</span>
+        <span class="meta-item">👥 Places totales: {{ workshop.sessions.length * 15 }}</span>
+      </div>
+      <button class="btn-details" (click)="onVoirDetails()">Voir détails</button>
+    </div>
+  </div>
+}

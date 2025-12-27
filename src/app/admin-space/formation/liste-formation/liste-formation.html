@@ -1,0 +1,54 @@
+<div class="admin-page">
+  @if(!showAdd && !showEdit) {
+  <header class="admin-header">
+    <h1 class="admin-title">Gestion des Formations</h1>
+    <p class="admin-subtitle">Ajoutez, modifiez et supprimez vos formations</p>
+    <button class="btn-details" (click)="ajouterFormation()">Ajouter Formation</button>
+  </header>
+
+  <div class="workshop-table-container">
+    <table class="workshop-table">
+      <thead>
+        <tr>
+          <th>Titre</th>
+          <th>Description</th>
+          <th>Niveau</th>
+          <th>Sessions</th>
+          <th>Étudiants</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (formation of formations; track formation.id) {
+        <tr class="workshop-row">
+          <td class="workshop-title-cell">{{ formation.titre }}</td>
+          <td class="workshop-description-cell">{{ formation.description }}</td>
+          <td>{{ formation.niveau }}</td>
+          <td>{{ compterSessions(formation) }}</td>
+          <td>{{ compterEtudiants(formation) }}</td>
+          <td>
+            <button class="btn-details" (click)="allerAuxSessions(formation.id)">Sessions</button>
+            <button class="btn-edit" (click)="editerFormation(formation)">Éditer</button>
+            <button class="btn-delete" (click)="supprimerFormation(formation.id)">Supprimer</button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  }
+
+  @if(showAdd) {
+    <div class="form-container">
+      <h2>Ajouter une nouvelle formation</h2>
+      <app-add-formation (save)="sauvegarderAjout($event)" (cancel)="annuler()"></app-add-formation>
+    </div>
+  }
+
+  @if(showEdit && selectedFormation) {
+    <div class="form-container">
+      <h2>Éditer la formation</h2>
+      <app-edit-formation [formation]="selectedFormation" (save)="sauvegarderModification($event)" (cancel)="annuler()"></app-edit-formation>
+    </div>
+  }
+</div>

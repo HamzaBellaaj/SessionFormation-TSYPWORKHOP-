@@ -1,0 +1,193 @@
+.session-card {
+    background: rgba(26, 43, 60, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(45, 79, 124, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.session-card:hover {
+    border-color: rgba(46, 204, 113, 0.4);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+}
+
+.session-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(45, 79, 124, 0.3);
+}
+
+.session-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.session-badge {
+    background: linear-gradient(135deg, #0066cc, #0055aa);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+}
+
+.session-details {
+    margin-bottom: 25px;
+}
+
+.detail-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: #e0e0e0;
+    font-size: 1rem;
+}
+
+.detail-row i {
+    color: #2ecc71;
+    width: 20px;
+    text-align: center;
+}
+
+.formateurs-row {
+    align-items: flex-start;
+}
+
+.formateurs-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.formateur-item {
+    background: rgba(10, 25, 41, 0.5);
+    padding: 8px 15px;
+    border-radius: 8px;
+    border-left: 3px solid #2ecc71;
+    font-weight: 600;
+    color: white;
+}
+
+.no-formateur {
+    color: #a0a0a0;
+    font-style: italic;
+    padding: 8px 15px;
+    background: rgba(10, 25, 41, 0.3);
+    border-radius: 8px;
+}
+
+/* Section CTA */
+.cta-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(45, 79, 124, 0.3);
+}
+
+.btn-enroll {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.3);
+    min-width: 250px;
+}
+
+.btn-enroll:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(46, 204, 113, 0.4);
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+}
+
+.btn-complete {
+    background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+    cursor: not-allowed;
+    box-shadow: 0 6px 20px rgba(149, 165, 166, 0.2);
+}
+
+.btn-complete:hover {
+    transform: none;
+    box-shadow: 0 6px 20px rgba(149, 165, 166, 0.2);
+    background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+}
+
+/* Animation pour l'apparition des sessions */
+.session-card {
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .session-card {
+        padding: 20px;
+    }
+    
+    .session-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .session-badge {
+        align-self: flex-start;
+    }
+    
+    .detail-row {
+        font-size: 0.95rem;
+    }
+    
+    .btn-enroll {
+        padding: 12px 25px;
+        font-size: 0.95rem;
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .formateurs-list {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .formateur-item, .no-formateur {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .btn-enroll {
+        width: 100%;
+        min-width: auto;
+    }
+}

@@ -1,0 +1,501 @@
+/* Style global de la page */
+:host {
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a1929 0%, #1a2b3c 100%);
+}
+
+/* Conteneur principal */
+.admin-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 20px;
+  color: #f0f0f0;
+  background: linear-gradient(135deg, #0a1929 0%, #1a2b3c 100%);
+}
+
+/* Titre principal */
+.admin-header {
+  max-width: 1400px;
+  margin: 0 auto 50px;
+  text-align: center;
+}
+
+.admin-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 15px;
+  line-height: 1.2;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 20px;
+}
+
+.admin-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 4px;
+  background: linear-gradient(90deg, #0066cc, #2ecc71);
+  border-radius: 2px;
+}
+
+.admin-subtitle {
+  font-size: 1.2rem;
+  color: #a0a0a0;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Tableau */
+.workshop-table-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  background: rgba(26, 43, 60, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  border: 1px solid rgba(45, 79, 124, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.workshop-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: transparent;
+}
+
+.workshop-table thead th {
+  padding: 20px;
+  text-align: left;
+  color: #2ecc71;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-bottom: 2px solid rgba(46, 204, 113, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.workshop-table tbody tr {
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(45, 79, 124, 0.3);
+}
+
+.workshop-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.workshop-table tbody tr:hover {
+  background: linear-gradient(90deg, 
+      rgba(0, 102, 204, 0.1) 0%, 
+      rgba(46, 204, 113, 0.1) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 102, 204, 0.15);
+  border-color: rgba(46, 204, 113, 0.3);
+}
+
+/* Cellules */
+.workshop-table td {
+  padding: 25px 20px;
+  vertical-align: middle;
+  color: #e0e0e0;
+}
+
+/* Image */
+.workshop-image-cell {
+  width: 120px;
+  text-align: center;
+}
+
+.workshop-image {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 3px solid rgba(0, 102, 204, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s ease;
+}
+
+.workshop-row:hover .workshop-image {
+  transform: scale(1.08) rotate(2deg);
+  border-color: #2ecc71;
+  box-shadow: 0 10px 25px rgba(46, 204, 113, 0.4);
+}
+
+/* Titre */
+.workshop-title-cell {
+  width: 18%;
+}
+
+.workshop-title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: white;
+  line-height: 1.3;
+  letter-spacing: 0.3px;
+}
+
+/* Description */
+.workshop-description-cell {
+  width: 30%;
+}
+
+.workshop-description {
+  margin: 0;
+  color: #a0a0a0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Métadonnées */
+.workshop-meta-cell {
+  width: 15%;
+}
+
+.meta-item {
+  display: block;
+  margin: 10px 0;
+  padding: 8px 15px;
+  background: rgba(10, 25, 41, 0.7);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #66b3ff;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(45, 79, 124, 0.3);
+  text-align: center;
+}
+
+.meta-item:nth-child(2) {
+  color: #2ecc71;
+}
+
+.meta-item:nth-child(3) {
+  color: #ff9966;
+}
+
+.workshop-row:hover .meta-item {
+  background: rgba(0, 102, 204, 0.15);
+  transform: translateX(5px);
+  border-color: rgba(46, 204, 113, 0.5);
+}
+
+/* Boutons */
+.workshop-table td:last-child {
+  width: 25%;
+  text-align: center;
+}
+
+.btn-details, .btn-edit, .btn-delete {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  margin: 8px 5px;
+  display: inline-block;
+  min-width: 130px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-details::before,
+.btn-edit::before,
+.btn-delete::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.btn-details:hover::before,
+.btn-edit:hover::before,
+.btn-delete:hover::before {
+  left: 100%;
+}
+
+.btn-details {
+  background: linear-gradient(135deg, #0066cc, #3a56d4);
+  color: white;
+  border: 1px solid rgba(0, 102, 204, 0.4);
+}
+
+.btn-details:hover {
+  background: linear-gradient(135deg, #0052a3, #2c3eaa);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 102, 204, 0.4);
+}
+
+.btn-edit {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  border: 1px solid rgba(46, 204, 113, 0.4);
+}
+
+.btn-edit:hover {
+  background: linear-gradient(135deg, #27ae60, #219653);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(46, 204, 113, 0.4);
+}
+
+.btn-delete {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+  border: 1px solid rgba(231, 76, 60, 0.4);
+}
+
+.btn-delete:hover {
+  background: linear-gradient(135deg, #c0392b, #a93226);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(231, 76, 60, 0.4);
+}
+
+/* Stats en haut */
+.admin-stats {
+  max-width: 1400px;
+  margin: 0 auto 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: rgba(26, 43, 60, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 25px;
+  border: 1px solid rgba(45, 79, 124, 0.3);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(46, 204, 113, 0.3);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.stat-card h3 {
+  color: #2ecc71;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.stat-card .number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
+  line-height: 1;
+}
+
+.stat-card .label {
+  color: #a0a0a0;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+/* Animation d'entrée */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.workshop-table tbody tr {
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.workshop-table tbody tr:nth-child(1) { animation-delay: 0.1s; }
+.workshop-table tbody tr:nth-child(2) { animation-delay: 0.2s; }
+.workshop-table tbody tr:nth-child(3) { animation-delay: 0.3s; }
+.workshop-table tbody tr:nth-child(4) { animation-delay: 0.4s; }
+.workshop-table tbody tr:nth-child(5) { animation-delay: 0.5s; }
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .admin-page {
+    padding: 30px 15px;
+  }
+  
+  .workshop-table-container {
+    padding: 30px;
+  }
+  
+  .workshop-table td {
+    padding: 20px 15px;
+  }
+  
+  .btn-details, .btn-edit, .btn-delete {
+    min-width: 110px;
+    padding: 10px 20px;
+    margin: 5px 3px;
+  }
+}
+
+@media (max-width: 900px) {
+  .admin-title {
+    font-size: 2.5rem;
+  }
+  
+  .workshop-table-container {
+    padding: 20px;
+    overflow-x: auto;
+  }
+  
+  .workshop-table {
+    min-width: 800px;
+  }
+  
+  .workshop-image {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .workshop-title {
+    font-size: 1.1rem;
+  }
+  
+  .btn-details, .btn-edit, .btn-delete {
+    display: block;
+    width: 100%;
+    margin: 8px 0;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .admin-title {
+    font-size: 2rem;
+  }
+  
+  .admin-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-page {
+    padding: 20px 10px;
+  }
+  
+  .admin-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .workshop-table-container {
+    padding: 15px;
+    border-radius: 15px;
+  }
+  
+  .workshop-table td {
+    padding: 15px 10px;
+  }
+  
+  .workshop-image {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .workshop-title {
+    font-size: 1rem;
+  }
+  
+  .workshop-description {
+    font-size: 0.85rem;
+    -webkit-line-clamp: 2;
+  }
+  
+  .meta-item {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+  
+  .btn-details, .btn-edit, .btn-delete {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Effet de brillance sur le conteneur */
+.workshop-table-container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, 
+      #0066cc, #2ecc71, #0066cc, #2ecc71);
+  border-radius: 22px;
+  z-index: -1;
+  animation: borderGlow 4s linear infinite;
+  background-size: 400% 400%;
+}
+
+@keyframes borderGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}.workshop-id {
+  margin-top: 5px;
+  font-size: 0.85rem;
+  color: #a0a0a0;
+  background: rgba(10, 25, 41, 0.5);
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.btn-details, .btn-edit, .btn-delete {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px 15px;
+  margin: 3px;
+}
+
+.btn-details i, .btn-edit i, .btn-delete i {
+  font-size: 0.9rem;
+}
+a{
+  text-decoration: none;
+  color: inherit;
+}

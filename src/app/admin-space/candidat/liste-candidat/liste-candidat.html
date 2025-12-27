@@ -1,0 +1,82 @@
+<div class="candidats-page">
+  <!-- Header -->
+  <div class="candidats-header">
+    <div class="header-top">
+      <h1 class="candidats-title">Liste des Candidats</h1>
+    </div>
+
+    <p class="candidats-subtitle">Gérez tous les candidats de votre plateforme</p>
+    <a [routerLink]="['/admin-space/candidat/add']" class="btn-add-candidat">
+      <i class="fas fa-plus"></i> Ajouter un Candidat
+    </a>
+  </div>
+
+  <!-- Stats -->
+  <div class="candidats-stats">
+    <div class="stat-card">
+      <h3>Total Candidats</h3>
+      <div class="number">{{ candidats.length }}</div>
+      <div class="label">Inscrits</div>
+    </div>
+    <div class="stat-card">
+      <h3>Nouveaux (7j)</h3>
+      <div class="number">5</div>
+      <div class="label">Cette semaine</div>
+    </div>
+    <div class="stat-card">
+      <h3>Taux d'activité</h3>
+      <div class="number">87%</div>
+      <div class="label">Candidats actifs</div>
+    </div>
+  </div>
+
+  <!-- Table Container -->
+  <div class="candidats-table-container">
+    <div class="table-wrapper">
+      <table class="candidats-table">
+        <thead>
+          <tr>
+            <th class="photo-column">Photo</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>CIN</th>
+            <th class="actions-column">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (co of candidats; track co.id) {
+          <tr class="candidat-row">
+            <td class="photo-cell">
+              <img
+                [src]="co.photo"
+                [alt]="co.nom + ' ' + co.prenom"
+                class="candidat-photo"
+                onerror="this.src='https://via.placeholder.com/60?text=Photo'"
+              />
+            </td>
+            <td class="nom-cell">{{ co.nom }}</td>
+            <td class="prenom-cell">{{ co.prenom }}</td>
+            <td class="email-cell">{{ co.email }}</td>
+            <td>
+              <span class="cin-cell">{{ co.cin }}</span>
+            </td>
+            <td class="actions-cell">
+              <a
+                [routerLink]="['/admin-space/candidat/edit', co.id]"
+                class="btn-action btn-edit"
+                title="Modifier"
+              >
+                <i class="fas fa-edit"></i> Modifier
+              </a>
+              <button class="btn-action btn-delete" (click)="deleteCandidat(co)" title="Supprimer">
+                <i class="fas fa-trash"></i> Supprimer
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

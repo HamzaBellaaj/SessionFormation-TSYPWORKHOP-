@@ -1,0 +1,98 @@
+<form class="form-container">
+  <div class="form-group">
+    <label for="localisation">Localisation *</label>
+    <input
+      type="text"
+      id="localisation"
+      [(ngModel)]="editForm.localisation"
+      name="localisation"
+      placeholder="Ex: Salle 101"
+      required
+    />
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="dateDebut">Date de début *</label>
+      <input
+        type="date"
+        id="dateDebut"
+        [(ngModel)]="editForm.dateDebut"
+        name="dateDebut"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="dateFin">Date de fin *</label>
+      <input
+        type="date"
+        id="dateFin"
+        [(ngModel)]="editForm.dateFin"
+        name="dateFin"
+        required
+      />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="heure">Heure</label>
+    <input
+      type="time"
+      id="heure"
+      [(ngModel)]="editForm.heure"
+      name="heure"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="nombreEtudiants">Nombre d'étudiants</label>
+    <input
+      type="number"
+      id="nombreEtudiants"
+      [(ngModel)]="editForm.nombreEtudiants"
+      name="nombreEtudiants"
+      min="0"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="formateur">Formateur</label>
+    <select
+      id="formateur"
+      [(ngModel)]="editForm.formateur"
+      name="formateur"
+    >
+      <option value="">-- Choisir un formateur --</option>
+      @for (f of formateurs; track f.id) {
+      <option [value]="f.id">
+        {{ f.prenom }} {{ f.nom }}
+      </option>
+      }
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="formateur1">Formateur secondaire</label>
+    <select
+      id="formateur1"
+      [(ngModel)]="editForm.formateur1"
+      name="formateur1"
+    >
+      <option value="">-- Choisir un formateur --</option>
+      @for (f of formateurs; track f.id) {
+      <option [value]="f.id">
+        {{ f.prenom }} {{ f.nom }}
+      </option>
+      }
+    </select>
+  </div>
+
+  <div class="form-actions">
+    <button type="button" class="btn-save" (click)="onSave()" [disabled]="!validateForm()">
+      <i class="fas fa-save"></i> Enregistrer
+    </button>
+    <button type="button" class="btn-cancel" (click)="onCancel()">
+      <i class="fas fa-times"></i> Annuler
+    </button>
+  </div>
+</form>
