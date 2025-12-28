@@ -9,6 +9,7 @@ import { ListeSession } from './admin-space/formation/session/liste-session/list
 import { ListeCandidat } from './admin-space/candidat/liste-candidat/liste-candidat';
 import { EditCandidat } from './admin-space/candidat/edit-candidat/edit-candidat';
 import { AddCandidat } from './admin-space/candidat/add-candidat/add-candidat';
+import { Erreur404 } from './client/erreur404/erreur404';
 
 export const routes: Routes = [
   {
@@ -52,5 +53,9 @@ export const routes: Routes = [
         component: EditCandidat
       }
     ]
+  },
+  {
+    path: '**',
+    component: Erreur404
   }
 ];
