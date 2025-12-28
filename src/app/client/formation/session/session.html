@@ -1,5 +1,5 @@
 @if(showForm){
-  <app-new-inscri [session]="session" [workshopId]="workshopId" (close)="closeForm()"/>
+  <app-new-inscri [workshopId]="workshopId" [sessionId]="session.id" [currentEtudiants]="session.nombreEtudiants" (close)="closeForm()"/>
 }
 <div class="session-card">
   <div class="session-header">

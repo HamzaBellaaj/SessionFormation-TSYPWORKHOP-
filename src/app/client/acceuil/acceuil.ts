@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { CHeader } from '../cheader/cheader';
-import { ClientRoutingModule } from "../client-routing-module";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-acceuil',
   standalone: true,
-  imports: [CHeader, ClientRoutingModule],
+  imports: [CHeader, RouterModule],
   templateUrl: './acceuil.html',
   styleUrl: './acceuil.css',
 })

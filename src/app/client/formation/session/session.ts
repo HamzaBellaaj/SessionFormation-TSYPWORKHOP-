@@ -16,6 +16,8 @@ export class Session {
   @Output() inscriptionComplete = new EventEmitter<void>();
   
   showForm = false;
+  
+  constructor() {}
 
   getFormateur1(): Formateur | null {
     if (!this.session.formateur) return null;

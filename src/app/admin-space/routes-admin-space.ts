@@ -13,9 +13,4 @@ const routes: Routes = [
   { path: "session/:workshopId", component: ListeSession },
   {path:"candidat",component:ListeCandidat}
 ];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
-})
 export class ClientRoutingModule { }

@@ -8,6 +8,7 @@
   background-color: rgba(26, 43, 60, 0.7); /* Bleu foncé transparent */
   z-index: 999;
   animation: fadeIn 0.3s ease-out;
+  cursor: pointer;
 }
 
 /* Style pour la boîte de dialogue */
@@ -48,7 +49,7 @@ dialog {
   }
 }
 
-/* En-tête de la boîte de dialogue - Inspiration de l'image */
+/* En-tête de la boîte de dialogue */
 dialog h2 {
   background: linear-gradient(135deg, #062a49, rgba(6, 31, 64, 0.3));
   color: white;
@@ -86,20 +87,20 @@ dialog h2::after {
   100% { transform: translateX(100%) rotate(30deg); }
 }
 
-/* Style du formulaire */
-dialog form {
+/* Style du contenu */
+dialog > div {
   padding: 2.5rem;
-  background-color: rgba(26, 43, 60, 0.7);
+  background-color: white;
 }
 
 /* Style pour chaque groupe de champs */
-dialog form p {
+dialog p {
   margin-bottom: 1.75rem;
   position: relative;
 }
 
 /* Style des labels - Couleur inspirée de l'image */
-dialog form label {
+dialog label {
   display: block;
   margin-bottom: 0.75rem;
   font-weight: 600;
@@ -138,14 +139,14 @@ dialog input[type="text"]::placeholder {
 }
 
 /* Style pour le conteneur des boutons */
-dialog form p:last-child {
+dialog p:last-child {
   display: flex;
   gap: 1.25rem;
   justify-content: flex-end;
   margin-top: 2.5rem;
   margin-bottom: 0;
   padding-top: 1.5rem;
-  border-top: 1px solid #072a5d;
+  border-top: 1px solid #e1e8f0; /* Changé de #072a5d à une couleur plus claire */
 }
 
 /* Style des boutons */
@@ -184,31 +185,31 @@ dialog button:hover::after {
 }
 
 /* Bouton Annuler - Style moderne */
-dialog button[type="button"] {
+dialog button[type="button"]:first-child {
   background-color: white;
   color: #0066cc;
   border: 2px solid #0066cc;
   box-shadow: 0 4px 6px rgba(45, 79, 124, 0.1);
 }
 
-dialog button[type="button"]:hover {
+dialog button[type="button"]:first-child:hover {
   background-color: #f0f7ff;
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(45, 79, 124, 0.3); /* Bleu transparent */
 }
 
-/* Bouton S'inscrire - Style vibrant comme l'image */
-dialog button[type="submit"] {
+/* Bouton S'inscrire - Style vibrant */
+dialog button[type="button"]:last-child {
   background: linear-gradient(135deg, #270c7d, rgba(45, 79, 124, 0.3));
   color: white;
   border: none;
   box-shadow: 0 4px 6px rgba(46, 204, 113, 0.2);
 }
 
-dialog button[type="submit"]:hover {
+dialog button[type="button"]:last-child:hover {
   background: linear-gradient(135deg, #27ae60, rgba(45, 79, 124, 0.3));
   transform: translateY(-2px);
-  box-shadow: 0 8px 15px rgba(46, 204, 113, 0.3); /* Vert transparent */
+  box-shadow: 0 8px 15px rgba(46, 204, 113, 0.3);
 }
 
 /* Effet actif pour les boutons */
@@ -217,24 +218,27 @@ dialog button:active {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Style pour les icônes (optionnel) */
-dialog label::before {
-  margin-right: 8px;
-  color: #0066cc;
-  font-family: 'Font Awesome', sans-serif;
+/* Effet de pulse sur le bouton d'inscription */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(46, 204, 113, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
 }
 
-/* Style pour les messages d'erreur */
-.error-message {
-  color: #e74c3c;
-  font-size: 0.85rem;
-  margin-top: 0.5rem;
-  font-weight: 500;
-  display: none;
+dialog button[type="button"]:last-child {
+  animation: pulse 2s infinite;
 }
 
-dialog input:invalid:focus + .error-message {
-  display: block;
+/* Petite décoration supplémentaire */
+dialog::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #2ecc71, #0066cc);
+  border-radius: 16px 16px 0 0;
 }
 
 /* Responsive design */
@@ -250,11 +254,11 @@ dialog input:invalid:focus + .error-message {
     font-size: 1.5rem;
   }
   
-  dialog form {
+  dialog > div {
     padding: 1.75rem;
   }
   
-  dialog form p:last-child {
+  dialog p:last-child {
     flex-direction: column;
     gap: 1rem;
   }
@@ -269,51 +273,22 @@ dialog input:invalid:focus + .error-message {
   }
 }
 
-/* Style pour les champs obligatoires */
+/* Style pour les champs obligatoires (optionnel - si vous ajoutez l'attribut required) */
 dialog input:required + label::after {
   content: " *";
   color: #e74c3c;
   font-weight: bold;
 }
 
-/* Effet de validation pour Angular Forms */
-dialog input.ng-valid.ng-touched {
-  border-color: #2ecc71;
-  background-color: rgba(46, 204, 113, 0.05);
+/* Style pour les messages d'erreur (optionnel - si vous en ajoutez) */
+.error-message {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  display: none;
 }
 
-dialog input.ng-invalid.ng-touched {
-  border-color: #e74c3c;
-  background-color: rgba(231, 76, 60, 0.05);
-}
-
-/* Effet de chargement pour le bouton submit */
-dialog button[type="submit"]:disabled {
-  background: linear-gradient(135deg, #95a5a6, #7f8c8d);
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-}
-
-/* Petite décoration supplémentaire */
-dialog::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #2ecc71, #0066cc);
-  border-radius: 16px 16px 0 0;
-}
-
-/* Effet de pulse sur le bouton d'inscription */
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4); }
-  70% { box-shadow: 0 0 0 10px rgba(46, 204, 113, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
-}
-
-dialog button[type="submit"] {
-  animation: pulse 2s infinite;
+dialog input:invalid:focus + .error-message {
+  display: block;
 }

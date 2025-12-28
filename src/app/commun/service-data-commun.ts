@@ -9,7 +9,6 @@ import { datawork } from './dataworkshops';
   providedIn: 'root',
 })
 export class ServiceDataCommun {
-  // Pour les workshops
   saveDataWorkshops(): void {
     localStorage.setItem('workshops', JSON.stringify(datawork));
   }
@@ -23,12 +22,12 @@ export class ServiceDataCommun {
     if (data !== null) {
       return JSON.parse(data);
     } else {
-      this.saveDataWorkshops();
-      return datawork;
+      const workshopsToSave = JSON.parse(JSON.stringify(datawork));
+      this.saveWorkshopsData(workshopsToSave);
+      return workshopsToSave;
     }
   }
 
-  // Pour les formateurs
   saveDataFormateurs(): void {
     localStorage.setItem('formateurs', JSON.stringify(formateurs));
   }
@@ -42,8 +41,9 @@ export class ServiceDataCommun {
     if (data !== null) {
       return JSON.parse(data);
     } else {
-      this.saveDataFormateurs();
-      return formateurs;
+      const formateursToSave = JSON.parse(JSON.stringify(formateurs));
+      this.saveFormateursData(formateursToSave);
+      return formateursToSave;
     }
   }
   

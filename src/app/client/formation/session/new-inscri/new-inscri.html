@@ -1,7 +1,7 @@
 <div class="backdrop" (click)="annuler()"></div>
 <dialog open>
   <h2>Formulaire d'inscription</h2>
-  <form (ngSubmit)="sInscrire()">
+  <div>
     <p>
       <label>Nom</label>
       <input type="text"/>
@@ -16,7 +16,7 @@
     </p>
     <p>
       <button type="button" (click)="annuler()">Annuler</button>
-      <button type="submit">S'inscrire</button>
+      <button type="button" (click)="sInscrire()">S'inscrire</button>
     </p>
-  </form>
+  </div>
 </dialog>

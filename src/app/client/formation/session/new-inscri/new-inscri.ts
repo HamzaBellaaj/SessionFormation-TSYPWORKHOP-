@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Sessionn } from 'src/app/commun/Interface-session';
 import { ServiceDataCommun } from 'src/app/commun/service-data-commun';
 
 @Component({
@@ -8,8 +7,9 @@ import { ServiceDataCommun } from 'src/app/commun/service-data-commun';
   styleUrl: './new-inscri.css',
 })
 export class NewInscri {
-  @Input() session!: Sessionn;
   @Input() workshopId!: string;
+  @Input() sessionId!: string;
+  @Input() currentEtudiants!: number;
   @Output() close = new EventEmitter<void>();
   
   constructor(private service: ServiceDataCommun) {}
@@ -18,39 +18,12 @@ export class NewInscri {
     this.close.emit();
   }
   
-  sInscrire() {
-    // Vérifier si la session n'est pas pleine
-    if (this.session.nombreEtudiants >= 15) {
-      alert("Désolé, toutes les places sont prises !");
-      this.close.emit();
-      return;
-    }
-
-    // Récupérer tous les workshops
+  sInscrire() { 
     const workshops = this.service.getDataWorkshops();
-    
-    // Trouver le workshop
-    const workshop = workshops.find(w => w.id === this.workshopId);
-    if (!workshop) {
-      alert("Erreur : workshop non trouvé");
-      this.close.emit();
-      return;
-    }
-    
-    // Trouver la session dans le workshop
-    const session = workshop.sessions.find(s => s.id === this.session.id);
-    if (!session) {
-      alert("Erreur : session non trouvée");
-      this.close.emit();
-      return;
-    }
-    
-    // Incrémenter le nombre d'étudiants
-    session.nombreEtudiants = session.nombreEtudiants + 1;
-    
-    // Sauvegarder dans localStorage
+    const workshop = workshops.find(w => w.id === this.workshopId); 
+    const session = workshop.sessions.find(s => s.id === this.sessionId);    
+    session.nombreEtudiants++;
     this.service.saveWorkshopsData(workshops);
-    
     alert("Inscription réussie !");
     this.close.emit();
   }
