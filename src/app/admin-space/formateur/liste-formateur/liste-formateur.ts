@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, effect } from '@angular/core';
 import { Router } from '@angular/router';
 import { Formateur } from '../../../commun/Interface-formateur';
 import { CommonModule } from '@angular/common';
@@ -19,7 +19,12 @@ export class ListeFormateur implements OnInit {
   showEdit = false;
   selectedFormateur: Formateur | null = null;
 
-  constructor(private formateurService: ServiceFormateur, private router: Router) {}
+  constructor(private formateurService: ServiceFormateur, private router: Router) {
+    // Détecter les changements du signal
+    effect(() => {
+      this.formateurs = this.formateurService.formateurs$();
+    });
+  }
 
   ngOnInit() {
     this.loadFormateurs();
@@ -55,20 +60,17 @@ export class ListeFormateur implements OnInit {
   onDeleteFormateur(id: string): void {
     if (confirm('Êtes-vous sûr de vouloir supprimer ce formateur ?')) {
       this.formateurService.deleteFormateur(id);
-      this.loadFormateurs();
     }
   }
 
   onSaveAdd(formateur: Formateur): void {
     this.formateurService.addFormateur(formateur);
-    this.loadFormateurs();
     this.showAdd = false;
   }
 
   onSaveEdit(formateur: Formateur): void {
     this.formateurService.updateFormateur(formateur);
     this.loadFormateurs();
-    this.showEdit = false;
     this.selectedFormateur = null;
   }
 
