@@ -28,20 +28,15 @@
       <tbody>
         @for (formateur of formateurs; track formateur.id) {
         <tr class="workshop-row">
-          <!-- Photo -->
           <td class="workshop-image-cell">
             <img [src]="formateur.image" 
                  alt="{{ formateur.prenom }} {{ formateur.nom }}" 
                  class="workshop-image">
           </td>
-          
-          <!-- Nom & Prénom -->
           <td class="workshop-title-cell">
             <h3 class="workshop-title">{{ formateur.prenom }} {{ formateur.nom }}</h3>
             <p class="formateur-cin">CIN: {{ formateur.cin }}</p>
           </td>
-          
-          <!-- Coordonnées -->
           <td class="workshop-description-cell">
             <div class="formateur-contact">
               <p><i class="fas fa-envelope"></i> {{ formateur.mail }}</p>
@@ -49,8 +44,6 @@
               <p><i class="fas fa-briefcase"></i> {{ formateur.lieuTravail }}</p>
             </div>
           </td>
-          
-          <!-- Informations -->
           <td class="workshop-meta-cell">
             <span class="meta-item">🎂 {{ getAge(formateur.dateNaissance) }} ans</span>
             <span class="meta-item">📍 {{ formateur.pays }}</span>
@@ -61,8 +54,6 @@
               </a>
             }
           </td>
-          
-          <!-- Actions -->
           <td>
             <button class="btn-edit" (click)="onEditFormateur(formateur)">
               <i class="fas fa-edit"></i> Éditer

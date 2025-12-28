@@ -10,7 +10,6 @@ import { Candidats } from '../../../commun/Interface-candidat';
   selector: 'app-edit-candidat',
   templateUrl: './edit-candidat.html',
   styleUrl: './edit-candidat.css',
-  providers: [ServiceCandidat],
   standalone: true,
   imports: [CommonModule, FormsModule]
 })

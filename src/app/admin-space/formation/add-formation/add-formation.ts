@@ -31,7 +31,6 @@ export class AddFormation {
 
   onSave(): void {
     if (this.validateForm()) {
-      // Convertir tagsInput en tableau
       this.formation.tags = this.tagsInput
         .split(',')
         .map(tag => tag.trim())

@@ -5,7 +5,8 @@ export const candidats= [
         prenom: "Karim",
         email: "karim.alaoui@email.com",
         cin: 12345678,
-        photo: "https://randomuser.me/api/portraits/men/1.jpg"
+        photo: "https://randomuser.me/api/portraits/men/1.jpg",
+        session:""
     },
     {
         id: 2,
@@ -13,7 +14,8 @@ export const candidats= [
         prenom: "Fatima",
         email: "fatima.benjelloun@email.com",
         cin: 23456789,
-        photo: "https://randomuser.me/api/portraits/women/2.jpg"
+        photo: "https://randomuser.me/api/portraits/women/2.jpg",
+        session:""
     },
     {
         id: 3,
@@ -21,7 +23,8 @@ export const candidats= [
         prenom: "Mehdi",
         email: "mehdi.chraibi@email.com",
         cin: 34567890,
-        photo: "https://randomuser.me/api/portraits/men/3.jpg"
+        photo: "https://randomuser.me/api/portraits/men/3.jpg",
+        session:""
     },
     {
         id: 4,
@@ -29,7 +32,8 @@ export const candidats= [
         prenom: "Samira",
         email: "samira.daoudi@email.com",
         cin: 45678901,
-        photo: "https://randomuser.me/api/portraits/women/4.jpg"
+        photo: "https://randomuser.me/api/portraits/women/4.jpg",
+        session:""
     },
     {
         id: 5,
@@ -37,7 +41,8 @@ export const candidats= [
         prenom: "Youssef",
         email: "youssef.elfassi@email.com",
         cin: 56789012,
-        photo: "https://randomuser.me/api/portraits/men/5.jpg"
+        photo: "https://randomuser.me/api/portraits/men/5.jpg",
+        session:""
     },
     {
         id: 6,
@@ -45,7 +50,8 @@ export const candidats= [
         prenom: "Leila",
         email: "leila.fahmi@email.com",
         cin: 67890123,
-        photo: "https://randomuser.me/api/portraits/women/6.jpg"
+        photo: "https://randomuser.me/api/portraits/women/6.jpg",
+        session:""
     },
     {
         id: 7,
@@ -53,7 +59,8 @@ export const candidats= [
         prenom: "Omar",
         email: "omar.gharbi@email.com",
         cin: 78901234,
-        photo: "https://randomuser.me/api/portraits/men/7.jpg"
+        photo: "https://randomuser.me/api/portraits/men/7.jpg",
+        session:""
     },
     {
         id: 8,
@@ -61,7 +68,8 @@ export const candidats= [
         prenom: "Nadia",
         email: "nadia.hassani@email.com",
         cin: 89012345,
-        photo: "https://randomuser.me/api/portraits/women/8.jpg"
+        photo: "https://randomuser.me/api/portraits/women/8.jpg",
+        session:""
     },
     {
         id: 9,
@@ -69,7 +77,8 @@ export const candidats= [
         prenom: "Khalid",
         email: "khalid.idrissi@email.com",
         cin: 90123456,
-        photo: "https://randomuser.me/api/portraits/men/9.jpg"
+        photo: "https://randomuser.me/api/portraits/men/9.jpg",
+        session:""
     },
     {
         id: 10,
@@ -77,7 +86,8 @@ export const candidats= [
         prenom: "Amina",
         email: "amina.jabri@email.com",
         cin: 11223344,
-        photo: "https://randomuser.me/api/portraits/women/10.jpg"
+        photo: "https://randomuser.me/api/portraits/women/10.jpg",
+        session:""
     },
     {
         id: 11,
@@ -85,7 +95,8 @@ export const candidats= [
         prenom: "Rachid",
         email: "rachid.kacemi@email.com",
         cin: 22334455,
-        photo: "https://randomuser.me/api/portraits/men/11.jpg"
+        photo: "https://randomuser.me/api/portraits/men/11.jpg",
+        session:""
     },
     {
         id: 12,
@@ -93,7 +104,8 @@ export const candidats= [
         prenom: "Sofia",
         email: "sofia.lamrani@email.com",
         cin: 33445566,
-        photo: "https://randomuser.me/api/portraits/women/12.jpg"
+        photo: "https://randomuser.me/api/portraits/women/12.jpg",
+        session:""
     },
     {
         id: 13,
@@ -101,7 +113,8 @@ export const candidats= [
         prenom: "Adil",
         email: "adil.mansouri@email.com",
         cin: 44556677,
-        photo: "https://randomuser.me/api/portraits/men/13.jpg"
+        photo: "https://randomuser.me/api/portraits/men/13.jpg",
+        session:""
     },
     {
         id: 14,
@@ -109,7 +122,8 @@ export const candidats= [
         prenom: "Hanae",
         email: "hanae.naciri@email.com",
         cin: 55667788,
-        photo: "https://randomuser.me/api/portraits/women/14.jpg"
+        photo: "https://randomuser.me/api/portraits/women/14.jpg",
+        session:""
     },
     {
         id: 15,
@@ -117,7 +131,8 @@ export const candidats= [
         prenom: "Tariq",
         email: "tariq.ouazzani@email.com",
         cin: 66778899,
-        photo: "https://randomuser.me/api/portraits/men/15.jpg"
+        photo: "https://randomuser.me/api/portraits/men/15.jpg",
+        session:""
     },
     {
         id: 16,
@@ -125,6 +140,7 @@ export const candidats= [
         prenom: "Rahma",
         email: "rahma.sassi@email.com",
         cin: 66778899,
-        photo: "https://randomuser.me/api/portraits/women/16.jpg"
+        photo: "https://randomuser.me/api/portraits/women/16.jpg",
+        session:""
     }
 ];

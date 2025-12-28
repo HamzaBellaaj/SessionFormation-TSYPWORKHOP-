@@ -67,15 +67,3 @@
 		</div>
 	</form>
 </div>
-
-<div class="edit-candidat-container" *ngIf="!candidat">
-	<div class="not-found-message">
-		<i class="fas fa-exclamation-circle"></i>
-		<p>Candidat introuvable</p>
-		<div class="not-found-back">
-			<button class="btn btn-cancel" (click)="router.navigate(['/admin-space/candidat'])">
-				<i class="fas fa-arrow-left"></i> Retour à la liste
-			</button>
-		</div>
-	</div>
-</div>

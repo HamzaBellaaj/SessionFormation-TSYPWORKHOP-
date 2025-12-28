@@ -70,8 +70,9 @@ export class ListeFormateur implements OnInit {
 
   onSaveEdit(formateur: Formateur): void {
     this.formateurService.updateFormateur(formateur);
-    this.loadFormateurs();
+    this.showEdit = false;
     this.selectedFormateur = null;
+    this.loadFormateurs();
   }
 
   onCancel(): void {

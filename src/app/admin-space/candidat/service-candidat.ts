@@ -1,36 +1,65 @@
-import { Injectable } from '@angular/core';
-import { candidats } from '../../commun/datacandidat';
+import { Injectable, signal } from '@angular/core';
 import { Candidats } from '../../commun/Interface-candidat';
+import { ServiceDataCommun } from '../../commun/service-data-commun';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ServiceCandidat {
-  private candidatsList: Candidats[] = candidats;
+  candidats$ = signal<Candidats[]>([]);
+
+  constructor(private dataService: ServiceDataCommun) {
+    this.candidats$.set(this.dataService.getDataCandidats());
+  }
 
   getCandidats(): Candidats[] {
-    return this.candidatsList;
+    return this.dataService.getDataCandidats();
   }
 
   getCandidatById(id: number): Candidats | undefined {
-    return this.candidatsList.find(c => c.id === id);
+    return this.getCandidats().find(c => c.id === id);
   }
 
   addCandidat(candidat: Candidats): void {
-    this.candidatsList.push(candidat);
+    const candidats = this.getCandidats();
+    const maxId = candidats.length > 0 ? Math.max(...candidats.map(c => c.id)) : 0;
+    candidat.id = maxId + 1;
+    candidats.push(candidat);
+    this.saveCandidats(candidats);
+    this.candidats$.set([...candidats]);
   }
 
-  updateCandidat(updated: Candidats): void {
-    const index = this.candidatsList.findIndex(c => c.id === updated.id);
+  updateCandidat(candidat: Candidats): void {
+    const candidats = this.getCandidats();
+    const index = candidats.findIndex(c => c.id === candidat.id);
     if (index !== -1) {
-      this.candidatsList[index] = { ...updated };
-    } else {
-      // Si le candidat n'existe pas, on l'ajoute
-      this.addCandidat(updated);
+      candidats[index] = candidat;
+      this.saveCandidats(candidats);
+      this.candidats$.set([...candidats]);
     }
   }
 
   deleteCandidat(id: number): void {
-    this.candidatsList = this.candidatsList.filter(c => c.id !== id);
+    const candidats = this.getCandidats();
+    const candidat = candidats.find(c => c.id === id);
+    if (candidat && candidat.session) {
+      const workshops = this.dataService.getDataWorkshops();
+      const workshop = workshops.find(w => w.id);
+      if (workshop) {
+        const session = workshop.sessions.find(s => s.id === candidat.session);
+        if (session && session.nombreEtudiants > 0) {
+          session.nombreEtudiants--;
+          this.dataService.saveWorkshopsData(workshops);
+        }
+      }
+    }
+    
+    const filtered = candidats.filter(c => c.id !== id);
+    this.candidats$.set(filtered);
+    this.saveCandidats(filtered);
+  }
+
+  private saveCandidats(candidats: Candidats[]): void {
+    this.dataService.saveCandidatsData(candidats);
   }
 }

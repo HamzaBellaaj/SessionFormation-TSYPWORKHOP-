@@ -4,15 +4,19 @@
   <div>
     <p>
       <label>Nom</label>
-      <input type="text"/>
+      <input type="text" [(ngModel)]="candidat.nom" placeholder="Entrez votre nom" />
     </p>
     <p>
       <label>Prénom</label>
-      <input type="text"/>
+      <input type="text" [(ngModel)]="candidat.prenom" placeholder="Entrez votre prénom" />
+    </p>
+    <p>
+      <label>Email</label>
+      <input type="email" [(ngModel)]="candidat.email" placeholder="votre@email.com" />
     </p>
     <p>
       <label>CIN</label>
-      <input type="text"/>
+      <input type="number" [(ngModel)]="candidat.cin" placeholder="Numéro CIN" />
     </p>
     <p>
       <button type="button" (click)="annuler()">Annuler</button>

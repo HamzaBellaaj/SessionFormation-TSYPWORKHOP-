@@ -5,4 +5,5 @@ export interface Candidats {
     email: string;
     cin: number;
     photo: String;
+    session: string
 }

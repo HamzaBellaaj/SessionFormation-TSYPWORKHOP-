@@ -1,5 +1,4 @@
 <div class="candidats-page">
-  <!-- Header -->
   <div class="candidats-header">
     <div class="header-top">
       <h1 class="candidats-title">Liste des Candidats</h1>
@@ -10,27 +9,13 @@
       <i class="fas fa-plus"></i> Ajouter un Candidat
     </a>
   </div>
-
-  <!-- Stats -->
   <div class="candidats-stats">
     <div class="stat-card">
       <h3>Total Candidats</h3>
       <div class="number">{{ candidats.length }}</div>
       <div class="label">Inscrits</div>
     </div>
-    <div class="stat-card">
-      <h3>Nouveaux (7j)</h3>
-      <div class="number">5</div>
-      <div class="label">Cette semaine</div>
-    </div>
-    <div class="stat-card">
-      <h3>Taux d'activité</h3>
-      <div class="number">87%</div>
-      <div class="label">Candidats actifs</div>
-    </div>
   </div>
-
-  <!-- Table Container -->
   <div class="candidats-table-container">
     <div class="table-wrapper">
       <table class="candidats-table">
@@ -41,6 +26,7 @@
             <th>Prénom</th>
             <th>Email</th>
             <th>CIN</th>
+            <th>Session</th>
             <th class="actions-column">Actions</th>
           </tr>
         </thead>
@@ -61,6 +47,9 @@
             <td>
               <span class="cin-cell">{{ co.cin }}</span>
             </td>
+            <td>
+              <span class="session-cell">{{ co.session }}</span>
+            </td>
             <td class="actions-cell">
               <a
                 [routerLink]="['/admin-space/candidat/edit', co.id]"
@@ -69,7 +58,7 @@
               >
                 <i class="fas fa-edit"></i> Modifier
               </a>
-              <button class="btn-action btn-delete" (click)="deleteCandidat(co)" title="Supprimer">
+              <button class="btn-action btn-delete" (click)="onDeleteCandidat(co.id)" title="Supprimer">
                 <i class="fas fa-trash"></i> Supprimer
               </button>
             </td>

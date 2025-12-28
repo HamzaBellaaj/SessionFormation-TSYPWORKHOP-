@@ -110,8 +110,10 @@ dialog label {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Style des champs input */
-dialog input[type="text"] {
+/* Style des champs input - TOUS LES TYPES */
+dialog input[type="text"],
+dialog input[type="email"],
+dialog input[type="number"] {
   width: 100%;
   padding: 0.85rem 1.25rem;
   border: 2px solid #e1e8f0;
@@ -124,18 +126,46 @@ dialog input[type="text"] {
   color: #1a2b3c;
 }
 
-/* Effets au focus des inputs */
-dialog input[type="text"]:focus {
+/* Style spécifique pour le champ number */
+dialog input[type="number"] {
+  /* Supprime les flèches dans certains navigateurs */
+  -moz-appearance: textfield;
+}
+
+/* Style pour les flèches du champ number */
+dialog input[type="number"]::-webkit-inner-spin-button,
+dialog input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Effets au focus des inputs - TOUS LES TYPES */
+dialog input[type="text"]:focus,
+dialog input[type="email"]:focus,
+dialog input[type="number"]:focus {
   outline: none;
   border-color: #2ecc71; /* Vert de succès */
   background-color: white;
   box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.3); /* Vert transparent */
 }
 
-/* Placeholder style */
-dialog input[type="text"]::placeholder {
+/* Placeholder style - TOUS LES TYPES */
+dialog input[type="text"]::placeholder,
+dialog input[type="email"]::placeholder,
+dialog input[type="number"]::placeholder {
   color: #94a3b8;
   font-style: italic;
+}
+
+/* Validation des champs email */
+dialog input[type="email"]:invalid:not(:focus):not(:placeholder-shown) {
+  border-color: #e74c3c;
+  background-color: rgba(231, 76, 60, 0.05);
+}
+
+dialog input[type="email"]:valid:not(:focus):not(:placeholder-shown) {
+  border-color: #2ecc71;
+  background-color: rgba(46, 204, 113, 0.05);
 }
 
 /* Style pour le conteneur des boutons */
@@ -146,7 +176,7 @@ dialog p:last-child {
   margin-top: 2.5rem;
   margin-bottom: 0;
   padding-top: 1.5rem;
-  border-top: 1px solid #e1e8f0; /* Changé de #072a5d à une couleur plus claire */
+  border-top: 1px solid #e1e8f0;
 }
 
 /* Style des boutons */
@@ -195,7 +225,7 @@ dialog button[type="button"]:first-child {
 dialog button[type="button"]:first-child:hover {
   background-color: #f0f7ff;
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(45, 79, 124, 0.3); /* Bleu transparent */
+  box-shadow: 0 6px 12px rgba(45, 79, 124, 0.3);
 }
 
 /* Bouton S'inscrire - Style vibrant */
@@ -268,19 +298,22 @@ dialog::before {
     min-width: auto;
   }
   
-  dialog input[type="text"] {
+  /* Appliquer à tous les types d'input */
+  dialog input[type="text"],
+  dialog input[type="email"],
+  dialog input[type="number"] {
     padding: 0.75rem 1rem;
   }
 }
 
-/* Style pour les champs obligatoires (optionnel - si vous ajoutez l'attribut required) */
+/* Style pour les champs obligatoires */
 dialog input:required + label::after {
   content: " *";
   color: #e74c3c;
   font-weight: bold;
 }
 
-/* Style pour les messages d'erreur (optionnel - si vous en ajoutez) */
+/* Style pour les messages d'erreur */
 .error-message {
   color: #e74c3c;
   font-size: 0.85rem;
@@ -291,4 +324,15 @@ dialog input:required + label::after {
 
 dialog input:invalid:focus + .error-message {
   display: block;
+}
+
+/* Validation visuelle pour Angular (optionnel) */
+dialog input.ng-valid.ng-touched {
+  border-color: #2ecc71;
+  background-color: rgba(46, 204, 113, 0.05);
+}
+
+dialog input.ng-invalid.ng-touched {
+  border-color: #e74c3c;
+  background-color: rgba(231, 76, 60, 0.05);
 }

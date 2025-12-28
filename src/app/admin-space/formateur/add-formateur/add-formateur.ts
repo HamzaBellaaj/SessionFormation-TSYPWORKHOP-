@@ -20,7 +20,7 @@ export class AddFormateur {
     mail: '',
     cin: '',
     pays: '',
-    cv: '',
+    cv: 'assets/cv.jpg',
     dateNaissance: '',
     lieuTravail: '',
     image: ''

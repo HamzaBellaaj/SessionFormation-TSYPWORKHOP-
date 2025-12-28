@@ -9,7 +9,6 @@ import { Candidats } from '../../../commun/Interface-candidat';
   selector: 'app-add-candidat',
   templateUrl: './add-candidat.html',
   styleUrl: './add-candidat.css',
-  providers: [ServiceCandidat],
   standalone: true,
   imports: [CommonModule, FormsModule]
 })
@@ -20,7 +19,8 @@ export class AddCandidat {
     prenom: '',
     email: '',
     cin: 0,
-    photo: ''
+    photo: '',
+    session: ''
   };
 
   router: Router;
